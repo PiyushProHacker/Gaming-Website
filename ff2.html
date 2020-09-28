@@ -1,0 +1,141 @@
+
+<html>
+<head>
+<link href="https://fonts.googleapis.com/css2?family=Graduate&display=swap" rel="stylesheet">
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial;
+  font-size: 17px;
+}
+
+#myVideo {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%; 
+  min-height: 100%;
+}
+.text{
+  background-color: #f8a600;
+  height: 100px;
+  width: 500px;
+  border: 10px solid black;
+  font-family: 'Graduate', cursive;
+font-size: 55px;
+text-transform: uppercase;
+position: absolute;
+top: 200px;
+left: 425px;
+color:white;
+text-shadow: 1px 1px 5px black;
+transition: .5s;
+}
+.text:hover{
+  background-color: white;
+box-shadow: 1px 1px 20px #f8a600;
+  color: black;
+  text-shadow: none;
+
+}
+
+.text .ffd{
+  font-weight: bold;
+  text-decoration: none;
+  
+  position: absolute;
+  left:28px;
+  top: 9px;
+
+}
+.text .ffd:hover{
+}
+.ff{
+  position:absolute;
+  top: 0px;
+  left: 370px;
+}
+.more{
+  position:absolute;
+  top: 430px;
+  left: 640px;
+animation-name: mover;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+
+}
+@keyframes mover{
+  from{
+top:430;
+left: 640px;
+  }
+  to{
+    top:490px;
+    left: 640px;
+  }
+}
+</style>
+</head>
+<body>
+<video muted autoplay class="vid" id="myvideo" style="width:100%;">
+    <source src="https://d1x9snl812q4nd.cloudfront.net/video/freefire.onl.mp4" type="video/mp4">
+    </video>
+<script type="text/javascript">
+    
+      var start = 23;
+      var end = 77;
+      var amuted = true;
+      
+      document.getElementById('myvideo').addEventListener('loadedmetadata', function() {
+          this.currentTime = start;
+          this.play();
+          this.muted=amuted;
+          this.loop=true; 
+          this.volume = .14; 
+  
+          if(end == '0') end = Math.floor(this.duration);
+  
+          
+        }, false);
+  
+  
+      document.getElementById('myvideo').addEventListener('timeupdate', function () {
+        if (this.currentTime >= end) {
+          this.currentTime = start;
+          this.play();
+        }
+      }, false);  
+
+    </script>
+
+      <div class="mutebtn" id="mutebtn" style="position: fixed;top:450px;
+      left: 1200px;">
+        <img id="audio_graphic" src="so.png">
+        </div>
+    <div class="more"><i class='fas fa-arrow-down' style="color:white;font-size: 60px;"></i></div>
+  
+<a href="#"><div class="text"><div class="ffd">Play for free</div></div></a>
+<div class="ff"><img src="fr.png" style="height: 150px;width: 600px;"></div>
+
+       <script type="text/javascript">
+        document.getElementById('mutebtn').addEventListener('click', function () {
+           amuted = !amuted;
+    
+          if(amuted) {
+          document.getElementById("audio_graphic").src="so.png";
+          } else {
+          document.getElementById("audio_graphic").src="sn.png";
+          }
+    
+          document.getElementById('myvideo').muted=amuted;
+    
+        }, false);
+        </script>
+
+</body>
+</html>
